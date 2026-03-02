@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A410C8C2F556FDE00DA0657 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A410C8B2F556FDE00DA0657 /* Settings.swift */; };
+		0A410C8E2F55703B00DA0657 /* DailyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A410C8D2F55703B00DA0657 /* DailyLog.swift */; };
 		120E289727DAFAF4000129B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120E289627DAFAF4000129B5 /* AppDelegate.swift */; };
 		120E289927DAFAF4000129B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120E289827DAFAF4000129B5 /* SceneDelegate.swift */; };
 		120E289B27DAFAF4000129B5 /* ViewControllerOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120E289A27DAFAF4000129B5 /* ViewControllerOne.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A410C8B2F556FDE00DA0657 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		0A410C8D2F55703B00DA0657 /* DailyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLog.swift; sourceTree = "<group>"; };
 		120E289327DAFAF4000129B5 /* StarterProjectMultipleViews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarterProjectMultipleViews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		120E289627DAFAF4000129B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		120E289827DAFAF4000129B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 				120E289A27DAFAF4000129B5 /* ViewControllerOne.swift */,
 				120E28AA27DAFE95000129B5 /* ViewControllerTwo.swift */,
 				121E32862817B5A200DC59D4 /* ViewControllerThree.swift */,
+				0A410C8B2F556FDE00DA0657 /* Settings.swift */,
+				0A410C8D2F55703B00DA0657 /* DailyLog.swift */,
 				120E289C27DAFAF4000129B5 /* Main.storyboard */,
 				120E289F27DAFAF6000129B5 /* Assets.xcassets */,
 				120E28A127DAFAF6000129B5 /* LaunchScreen.storyboard */,
@@ -144,7 +150,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A410C8C2F556FDE00DA0657 /* Settings.swift in Sources */,
 				120E28AB27DAFE95000129B5 /* ViewControllerTwo.swift in Sources */,
+				0A410C8E2F55703B00DA0657 /* DailyLog.swift in Sources */,
 				120E289B27DAFAF4000129B5 /* ViewControllerOne.swift in Sources */,
 				121E32872817B5A200DC59D4 /* ViewControllerThree.swift in Sources */,
 				120E289727DAFAF4000129B5 /* AppDelegate.swift in Sources */,
