@@ -1,8 +1,8 @@
 /*
  
- ViewControllerThree.swift
+ ViewControllerTwo.swift
  
- This file will contain the code for the third viewcontroller.
+ This file will contain the code for the second viewcontroller.
  Please ensure that your code is organised and is easy to read.
  This means that you will need to both structure your code correctly,
  in addition to using the correct syntax for Swift.
@@ -27,21 +27,32 @@
 
 import UIKit
 
-class ViewControllerThree: UIViewController {
+class ViewControllerTwo: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var ActivityName: UILabel!
     
+    @IBOutlet weak var scrollingTableView: UITableView!
     
     // MARK: - Variables and Constants
     
-    
+    func activityLabel(){
+        let newActivityName = nameOfActivity.buttonName
+        if newActivityName.isEmpty{
+            ActivityName.text = newActivityName
+        }
+    }
+        
     
     // MARK: - IBActions and Functions
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
+
+
 }

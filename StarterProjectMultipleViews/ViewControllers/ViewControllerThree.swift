@@ -1,8 +1,8 @@
 /*
  
- ViewControllerOne.swift
+ ViewControllerThree.swift
  
- This file will contain the code for the first viewcontroller.
+ This file will contain the code for the third viewcontroller.
  Please ensure that your code is organised and is easy to read.
  This means that you will need to both structure your code correctly,
  in addition to using the correct syntax for Swift.
@@ -26,24 +26,38 @@
  */
 
 import UIKit
+import SwiftUI
 
-class ViewControllerOne: UIViewController {
-    
+class ViewControllerThree: UIViewController {
+    // this is the view for timers
     // MARK: - IBOutlets
     
+    @IBOutlet weak var timerImage: UIImageView!
     
+    @IBOutlet weak var timerValue: UILabel!
     
     // MARK: - Variables and Constants
+    
+
+    
+    
+    
+    
+    
+    
+    
     
     
     
     // MARK: - IBActions and Functions
     
+    @IBAction func startOrStop(_ sender: Any) {
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
-
 }
-
