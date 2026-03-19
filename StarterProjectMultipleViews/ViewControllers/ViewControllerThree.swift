@@ -32,8 +32,6 @@ class ViewControllerThree: UIViewController {
     // this is the view for timers
     // MARK: - IBOutlets
     
-    @IBOutlet weak var timerImage: UIImageView!
-    
     @IBOutlet weak var timerValue: UILabel!
     var currentIndex = 0
     // MARK: - Variables and Constants
@@ -45,6 +43,8 @@ class ViewControllerThree: UIViewController {
     
     
     
+    
+    // MARK: - IBActions and Functions
     
     func startTimer(){
         guard !isRunning else {return}
@@ -67,19 +67,26 @@ class ViewControllerThree: UIViewController {
     
     @objc func updatetimer(){
         time=time+0.01
+        //you add 0.01 to the existing time
         updateTimerLabel()
+        // the label is then updated with the new numbers
     }
     func updateTimerLabel(){
         timerValue.text=(String(format:"%.2f",time))
     }
     
-    // MARK: - IBActions and Functions
+    @IBAction func logTime(_ sender: Any) {
+        let newTime = round(time)
+        finalTime.timeofDate = String(newTime)
+    }
     
     @IBAction func Start(_ sender: UIButton) {
         startTimer()
+        //this button allows for thet imer to start
     }
     @IBAction func Stop(_ sender: UIButton) {
             stopTimer()
+        // this stops the timer
     }
         
         override func viewDidLoad() {

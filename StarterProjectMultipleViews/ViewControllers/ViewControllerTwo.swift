@@ -38,10 +38,8 @@ class ViewControllerTwo: UIViewController {
     // MARK: - Variables and Constants
     
     func activityLabel(){
-        let newActivityName = nameOfActivity.buttonName
-        if newActivityName.isEmpty{
-            ActivityName.text = newActivityName
-        }
+        let selectedActivityName = nameOfActivity.buttonName
+        ActivityName.text = selectedActivityName
     }
         
     
@@ -51,6 +49,7 @@ class ViewControllerTwo: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityLabel()
         // Do any additional setup after loading the view.
     }
 
