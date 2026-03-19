@@ -39,16 +39,16 @@ class ViewControllerThree: UIViewController {
     // MARK: - Variables and Constants
     
     
-    @State private var time = 00.00
-    @State private var isRunning = false
-    @State private var timer:Timer?
+    var time = 00.00
+    var isRunning = false
+    var timer:Timer?
     
     
     
     
     func startTimer(){
         guard !isRunning else {return}
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updatetImer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updatetimer), userInfo: nil, repeats: true)
         isRunning = true
         //tells the computer that yes the timer is repeating and still counting the timer
     }
@@ -65,8 +65,8 @@ class ViewControllerThree: UIViewController {
         updateTimerLabel()
     }
     
-    @objc func updatetImer(){
-        time+=0.01
+    @objc func updatetimer(){
+        time=time+0.01
         updateTimerLabel()
     }
     func updateTimerLabel(){
@@ -75,17 +75,17 @@ class ViewControllerThree: UIViewController {
     
     // MARK: - IBActions and Functions
     
-    @IBAction func startOrStop(_ sender: UIButton) {
-        if sender.tag == 1 {
-                stopTimer()
-        }else{
-            startTimer()
-            }
-        }
+    @IBAction func Start(_ sender: UIButton) {
+        startTimer()
+    }
+    @IBAction func Stop(_ sender: UIButton) {
+            stopTimer()
+    }
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            
+            updateTimerLabel()
+            stopTimer()
             // Do any additional setup after loading the view.
         }
     }
