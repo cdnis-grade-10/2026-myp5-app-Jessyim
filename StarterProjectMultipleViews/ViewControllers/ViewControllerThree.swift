@@ -94,9 +94,13 @@ class ViewControllerThree: UIViewController {
         // the remaineder gives us teh "minutes" actually used
         let newTime = timerValue.text ?? "00:00:00.00"
         // for formating purposes not rlly needed anymore
-        finalhours.hourtimeofDate = String(totalhours)
-        finalminutes.minutestimeofDate = String(newMinutes)
-        
+        previousData.hourtimeofDate = String(totalhours)
+        previousData.minutestimeofDate = String(newMinutes)
+        previousData.latestDate = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .none)
+        let entry = aSingleLogEntry(activity: previousData.nameOfActivity,date: Date(),hours:totalhours,minutes: newMinutes)
+        //sends teh format fro a single entry 
+        storeData.entries.append(entry)
+        storeData.saveData()
     }
     
     @IBAction func Start(_ sender: UIButton) {

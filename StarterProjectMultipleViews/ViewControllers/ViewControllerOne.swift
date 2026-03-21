@@ -41,17 +41,17 @@ class ViewControllerOne: UIViewController {
   
     
     @IBAction func Creativity(_ sender: Any) {
-        nameOfActivity.buttonName = "Creativity"
+        previousData.nameOfActivity = "Creativity"
         // the button is chosen as creativty so the name creativity is stored into the storage file under the structure called name of activity, and specifically the button name
     }
     
     @IBAction func Activity(_ sender: Any) {
-        nameOfActivity.buttonName = "Activity"
+        previousData.nameOfActivity = "Activity"
         // similarly the name activity is stored
     }
     
     @IBAction func Service(_ sender: Any) {
-        nameOfActivity.buttonName = "Service"
+        previousData.nameOfActivity = "Service"
         // service is chosen to be stored
     }
     
