@@ -40,7 +40,7 @@ class ViewControllerFour: UIViewController {
     // MARK: - IBActions and Functions
 
     func commentLabel(){
-        let timeName = finalTime.timeofDate
+        let timeName = "You logged \(finalhours.hourtimeofDate) hours, \(finalminutes.minutestimeofDate) minutes of \(nameOfActivity.buttonName) today"
         finalLabel.text = timeName
     }
     

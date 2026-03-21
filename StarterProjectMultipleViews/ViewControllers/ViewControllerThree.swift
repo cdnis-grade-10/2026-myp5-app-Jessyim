@@ -72,12 +72,31 @@ class ViewControllerThree: UIViewController {
         // the label is then updated with the new numbers
     }
     func updateTimerLabel(){
-        timerValue.text=(String(format:"%.2f",time))
+        let totalSeconds = Int(time)
+        let hours = totalSeconds/3600
+        //total seconds divided by 3600 is the total hours used
+        let minutes = (totalSeconds % 3600) / 60
+        //the remainder value from dividing the total hours is at the front in braket, is taken out and divided by 60 to get how many minutes is left
+        let seconds = totalSeconds % 60
+        // the seconds is the remainder of the totalseconds divided by 60 which is the minute
+        let centiseconds = Int((time - Double(totalSeconds)) * 100)
+        //the fraction part of total seocnd multiplied by 100 to get a infinite value.
+        timerValue.text=(String(format:"%02d:%02d:%02d.%02d",hours,minutes,seconds,centiseconds))
+        //%02d ensures double digits forevery singke part of teh value
     }
     
     @IBAction func logTime(_ sender: Any) {
-        let newTime = round(time)
-        finalTime.timeofDate = String(newTime)
+        let totalMinutes = ceil(time/60)
+        // ceil takes the number and rounds it, useful for calculating total minutes
+        let totalhours = Int(totalMinutes) / 60
+        //the value of total minutes divided by 60 gives us to hours, int only give teh 1st half
+        let newMinutes = Int(totalMinutes) % 60
+        // the remaineder gives us teh "minutes" actually used
+        let newTime = timerValue.text ?? "00:00:00.00"
+        // for formating purposes not rlly needed anymore
+        finalhours.hourtimeofDate = String(totalhours)
+        finalminutes.minutestimeofDate = String(newMinutes)
+        
     }
     
     @IBAction func Start(_ sender: UIButton) {

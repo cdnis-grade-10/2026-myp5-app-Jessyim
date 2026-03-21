@@ -14,11 +14,14 @@ struct nameOfActivity{
     // this allows this variable to be accessed throughout the different view controllers, allowing it to be a common variable.
 }
 
-struct finalTime{
-    static var timeofDate : String = ""
+struct finalhours{
+    static var hourtimeofDate : String = ""
     // this allows this variable to be accessed throughout the different view controllers, allowing it to be a common variable.
 }
-
+struct finalminutes{
+    static var minutestimeofDate : String = ""
+    // this allows this variable to be accessed throughout the different view controllers, allowing it to be a common variable.
+}
 
 struct previousData{
     
