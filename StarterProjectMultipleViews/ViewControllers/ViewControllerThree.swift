@@ -97,8 +97,8 @@ class ViewControllerThree: UIViewController {
         previousData.hourtimeofDate = String(totalhours)
         previousData.minutestimeofDate = String(newMinutes)
         previousData.latestDate = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .none)
-        let entry = aSingleLogEntry(activity: previousData.nameOfActivity,date: Date(),hours:totalhours,minutes: newMinutes)
-        //sends teh format fro a single entry 
+        let entry = aSingleLogEntry(activity: previousData.nameOfActivity,date: Date(),hours:totalhours,minutes: newMinutes,reflection: "")
+        //sends teh format fro a single entry
         storeData.entries.append(entry)
         storeData.saveData()
     }

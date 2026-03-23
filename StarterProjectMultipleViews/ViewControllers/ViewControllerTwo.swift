@@ -36,6 +36,7 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBOutlet weak var scrollingTableView: UITableView!
     
+    
     // MARK: - Variables and Constants
     
     var displayedEntries: [aSingleLogEntry] = []
@@ -95,7 +96,20 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
         // the cell text will combine teh date in teh date string, with the time string which is how many minutes or hours to be placed in every cell.
         return cell
 }
-
+    
+    func tableView(_ tableView:UITableView, didSelectRowAt indexPath: IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
+        let selectedEntry = displayedEntries[indexPath.row]
+        performSegue(withIdentifier: "showDailyLog", sender: selectedEntry.date)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender:Any?){
+        if segue.identifier == "showDailyLog",
+           let destination = segue.destination as? DailyLog,
+           let date = sender as? Date{
+            destination.chosenDate = date
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,7 +125,7 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refreshData()
-        // all data is refreshed :) 
+        // all data is refreshed :)
         scrollingTableView.reloadData()
     }
 

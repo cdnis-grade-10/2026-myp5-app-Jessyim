@@ -33,6 +33,7 @@ class ViewControllerFour: UIViewController {
     
     @IBOutlet weak var finalLabel: UILabel!
     
+    @IBOutlet weak var Inputtext: UITextField!
     
     // MARK: - Variables and Constants
     
@@ -43,6 +44,19 @@ class ViewControllerFour: UIViewController {
         let timeName = "You logged \(previousData.hourtimeofDate) hours, \(previousData.minutestimeofDate) minutes of \(previousData.nameOfActivity) today"
         finalLabel.text = timeName
     }
+    
+    @IBAction func reflectionSaved(_ sender: UIButton) {
+        guard let noteText = Inputtext.text, !noteText.isEmpty else {
+            // Optionally show an alert if the field is empty
+            return
+        }
+        if let lastIndex = storeData.entries.indices.last {
+            storeData.entries[lastIndex].reflection = noteText
+            storeData.saveData()   // persist the change
+        }
+
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

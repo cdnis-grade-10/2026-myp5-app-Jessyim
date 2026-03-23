@@ -23,6 +23,7 @@ struct aSingleLogEntry: Codable {
     let date: Date
     let hours: Int
     let minutes: Int
+    var reflection: String 
     //purely used to stored the data in a good structure to call for the table format easier
 }
 
