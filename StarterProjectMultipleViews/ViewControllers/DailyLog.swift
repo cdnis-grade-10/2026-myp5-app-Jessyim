@@ -16,6 +16,8 @@ class DailyLog: UIViewController {
     @IBOutlet weak var DateToday: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
+    
+
     // MARK: - Variables and Constants
     var chosenDate:Date?
     var entriesForDate: [aSingleLogEntry] = []
@@ -24,6 +26,31 @@ class DailyLog: UIViewController {
     
     // MARK: - IBActions and Functions
 
+
+
+    @IBAction func dayBefore(_ sender: UIButton) {
+        guard let currentDate = chosenDate else {return}
+        let newDate = Calendar.current.date(byAdding: .day, value: -1, to: currentDate)
+        // new date is teh new constant, and then u use the date ability to -1 to the original date
+        chosenDate = newDate
+        // u set teh date that will be displayed as the new date
+        displayData()
+        loadEntries()
+            
+    }
+    
+    
+    @IBAction func dayAfter(_ sender: UIButton) {
+        guard let currentDate = chosenDate else {return}
+        let newDate = Calendar.current.date(byAdding: .day, value: +1, to: currentDate)
+        // same thing the most improtant part is that u chose to add to day by -1, which means u are subtracting 1 for the current date
+        chosenDate = newDate
+        // same thing u set a new date
+        displayData()
+        loadEntries()
+    }
+    
+    
     func setUpdatatable(){
         tableView.dataSource = self
         tableView.delegate = self
@@ -41,6 +68,7 @@ class DailyLog: UIViewController {
     func loadEntries(){
         guard let date = chosenDate else {return}
         let calendar = Calendar.current
+        // calender is teh constant and there is a function that is called calendar that allows us to access the calendar date as of right now. current gives us the current date
         entriesForDate = storeData.entries.filter{entry in
             calendar.isDate(entry.date, inSameDayAs: date)}
         entriesForDate.sort { $0.date > $1.date }
@@ -96,5 +124,5 @@ extension DailyLog: UITableViewDataSource{
 extension DailyLog: UITableViewDelegate {
     // You can implement didSelectRowAt if needed
 }
-
+// learn how to use date picker
 

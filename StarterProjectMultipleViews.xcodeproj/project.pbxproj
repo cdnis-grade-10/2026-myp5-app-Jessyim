@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0A410C8C2F556FDE00DA0657 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A410C8B2F556FDE00DA0657 /* Settings.swift */; };
 		0A410C8E2F55703B00DA0657 /* DailyLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A410C8D2F55703B00DA0657 /* DailyLog.swift */; };
+		0A4178E42F724DDC0033E00E /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A4178E32F724DDC0033E00E /* TableViewCell.xib */; };
+		0A4178E52F724DDC0033E00E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4178E22F724DDC0033E00E /* TableViewCell.swift */; };
+		0A4178E82F724E120033E00E /* TableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A4178E72F724E120033E00E /* TableViewController.xib */; };
+		0A4178E92F724E120033E00E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4178E62F724E120033E00E /* TableViewController.swift */; };
 		0A9F16BB2F57E80B0000C017 /* ViewControllerFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F16BA2F57E7FD0000C017 /* ViewControllerFour.swift */; };
 		0A9F16C12F57EC790000C017 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F16C02F57EC790000C017 /* Storage.swift */; };
 		0A9F16C52F57F3150000C017 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F16C42F57F3150000C017 /* Timer.swift */; };
@@ -25,6 +29,10 @@
 /* Begin PBXFileReference section */
 		0A410C8B2F556FDE00DA0657 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0A410C8D2F55703B00DA0657 /* DailyLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyLog.swift; sourceTree = "<group>"; };
+		0A4178E22F724DDC0033E00E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		0A4178E32F724DDC0033E00E /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		0A4178E62F724E120033E00E /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		0A4178E72F724E120033E00E /* TableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewController.xib; sourceTree = "<group>"; };
 		0A9F16BA2F57E7FD0000C017 /* ViewControllerFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFour.swift; sourceTree = "<group>"; };
 		0A9F16C02F57EC790000C017 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		0A9F16C42F57F3150000C017 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
@@ -97,6 +105,10 @@
 				120E289627DAFAF4000129B5 /* AppDelegate.swift */,
 				120E289827DAFAF4000129B5 /* SceneDelegate.swift */,
 				120E289C27DAFAF4000129B5 /* Main.storyboard */,
+				0A4178E22F724DDC0033E00E /* TableViewCell.swift */,
+				0A4178E32F724DDC0033E00E /* TableViewCell.xib */,
+				0A4178E62F724E120033E00E /* TableViewController.swift */,
+				0A4178E72F724E120033E00E /* TableViewController.xib */,
 				120E289F27DAFAF6000129B5 /* Assets.xcassets */,
 				120E28A127DAFAF6000129B5 /* LaunchScreen.storyboard */,
 				120E28A427DAFAF6000129B5 /* Info.plist */,
@@ -163,7 +175,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				120E28A327DAFAF6000129B5 /* LaunchScreen.storyboard in Resources */,
+				0A4178E42F724DDC0033E00E /* TableViewCell.xib in Resources */,
 				120E28A027DAFAF6000129B5 /* Assets.xcassets in Resources */,
+				0A4178E82F724E120033E00E /* TableViewController.xib in Resources */,
 				120E289E27DAFAF4000129B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,6 +195,8 @@
 				0A9F16C52F57F3150000C017 /* Timer.swift in Sources */,
 				120E289B27DAFAF4000129B5 /* ViewControllerOne.swift in Sources */,
 				121E32872817B5A200DC59D4 /* ViewControllerThree.swift in Sources */,
+				0A4178E52F724DDC0033E00E /* TableViewCell.swift in Sources */,
+				0A4178E92F724E120033E00E /* TableViewController.swift in Sources */,
 				0A9F16C12F57EC790000C017 /* Storage.swift in Sources */,
 				120E289727DAFAF4000129B5 /* AppDelegate.swift in Sources */,
 				0A9F16BB2F57E80B0000C017 /* ViewControllerFour.swift in Sources */,

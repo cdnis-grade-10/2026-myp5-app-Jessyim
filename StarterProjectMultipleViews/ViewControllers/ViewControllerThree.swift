@@ -27,6 +27,8 @@
 
 import UIKit
 import SwiftUI
+import AVFoundation
+// might need to request the use ofAVfoundation and access to videos
 
 class ViewControllerThree: UIViewController {
     // this is the view for timers
@@ -36,10 +38,14 @@ class ViewControllerThree: UIViewController {
     var currentIndex = 0
     // MARK: - Variables and Constants
     
+    var player: AVPlayer?
     
     var time = 00.00
+    // the value u want starts as a empty value of 00.00.00
     var isRunning = false
+    // a boolean value telling the timer has NOT started yet
     var timer:Timer?
+    // u call for a timer which is a prebuilt thing in Swift UI
     
     
     
@@ -59,11 +65,6 @@ class ViewControllerThree: UIViewController {
         // tells the computer that the timer SHOULD STOP
     }
     
-    @IBAction func resetTimer(_ sender: Any) {
-        stopTimer()
-        time = 00.00
-        updateTimerLabel()
-    }
     
     @objc func updatetimer(){
         time=time+0.01
@@ -111,7 +112,51 @@ class ViewControllerThree: UIViewController {
             stopTimer()
         // this stops the timer
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        guard let videoPath = Bundle.main.path(forResource: "howtoputonabrace", ofType: "m4v") else {
+            // this sis the name of the video .m4v which i need to find a video to put here later
+            print("Video not found")
+            return
+        }
+        
+        player = AVPlayer(url: URL(fileURLWithPath: videoPath))
+        let layer = AVPlayerLayer(player: player)
+        
+        // these adjustments below sets teh size and location the video will be playing
+        let videoWidth: CGFloat = view.bounds.width - 80
+        // this Adjust width of the video
+        let videoHeight: CGFloat = 400
+        // Adjust height
+        let xOffset: CGFloat = 40
+        // on the horizontal axis movements
+        let yOffset: CGFloat = 200
+        // UP and down movement
+        // all teh above are constants that atre fixed. the video can also go on repeat.
+        
+        layer.frame = CGRect(x: xOffset, y: yOffset, width: videoWidth, height: videoHeight)
+        // the frame we are using is based off teh x and y value movement, the wideth and teh hieght that is given
+        layer.videoGravity = .resizeAspect // Preserve aspect ratio
+        view.layer.addSublayer(layer)
+        
+        player?.volume = 80
+        // u set the volum of the video, which should be changed later on in settings (can be changed)
+        player?.play()
+        // allows th evideo to play
+        
+        // Loop the video
+        player?.actionAtItemEnd = .none
+        NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+    }
+    
+    @objc func playerItemDidReachEnd(notification: Notification) {
+        // Restart the video from the beginning
+        if let playerItem = notification.object as? AVPlayerItem {
+            playerItem.seek(to: .zero, completionHandler: nil)
+        }
+    }
+    
         override func viewDidLoad() {
             super.viewDidLoad()
             updateTimerLabel()
