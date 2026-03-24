@@ -50,9 +50,17 @@ class ViewControllerFour: UIViewController {
             // Optionally show an alert if the field is empty
             return
         }
+        
+        let activity = previousData.nameOfActivity
+        // recall, this is in storage folder with teh name of the activities
         if let lastIndex = storeData.entries.indices.last {
             storeData.entries[lastIndex].reflection = noteText
-            storeData.saveData()   // persist the change
+            storeData.saveData()
+            //ensure that ethe data is stored well
+            
+            Inputtext.text = ""
+        }else{
+            print("no log entry found for ,\(activity)")
         }
 
     }

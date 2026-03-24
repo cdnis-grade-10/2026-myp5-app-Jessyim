@@ -116,8 +116,20 @@ extension DailyLog: UITableViewDataSource{
             timeString = "0 minutes"
             // if no hours nor miuntes u show 0, shouldnt show that but sure
         }
-        cell.textLabel?.text = "\(dateString): \(timeString)"
-        // the cell text will combine teh date in teh date string, with the time string which is how many minutes or hours to be placed in every cell.
+        
+        let reflectionString = entry.reflection.isEmpty ? "" : " - \"\(entry.reflection)\""
+        
+        var cellText = "\(entry.activity)\n"
+        cellText += "\(dateString):\(timeString)"
+        
+        if !reflectionString.isEmpty {
+            cellText += "\n\(reflectionString)"                  // reflection (new line)
+        }
+        
+        cell.textLabel?.numberOfLines = 0   // allow multiple lines
+        cell.textLabel?.text = cellText
+
+        
         return cell
     }
 }
