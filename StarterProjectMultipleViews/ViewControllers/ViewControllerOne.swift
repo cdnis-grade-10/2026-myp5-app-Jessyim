@@ -31,6 +31,10 @@ class ViewControllerOne: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var creativityButton: UIButton!
+    
+    @IBOutlet weak var activityButton: UIButton!
+    @IBOutlet weak var serviceButton: UIButton!
     
     
     // MARK: - Variables and Constants
@@ -58,6 +62,9 @@ class ViewControllerOne: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        creativityButton.frame.size = CGSize(width: 250, height: 100)
+        activityButton.frame.size = CGSize(width: 250, height: 100)
+        serviceButton.frame.size = CGSize(width: 250, height: 100)
         // Do any additional setup after loading the view.
     }
 

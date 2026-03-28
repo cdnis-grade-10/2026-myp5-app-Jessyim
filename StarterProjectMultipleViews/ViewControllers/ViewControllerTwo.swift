@@ -39,7 +39,7 @@ struct WeeklyBarChart: View{
             ForEach (data){ d in
                 BarMark(x: .value("Day",d.day), y: .value("Hours",d.hours))
                 // using barmark to make bar graphs.
-                .foregroundStyle(Color.blue.gradient)
+                    .foregroundStyle(Color(red: 0.0824, green: 0.0902, blue: 0.2392))
             }
             
         }
@@ -47,8 +47,7 @@ struct WeeklyBarChart: View{
         // this is the y axis the number of hours
         .chartXAxisLabel("Day of Week")
         // x axis is the day of the week
-        .frame(height: 300)
-        
+        .frame(height: 250)
         .padding()
         
     }

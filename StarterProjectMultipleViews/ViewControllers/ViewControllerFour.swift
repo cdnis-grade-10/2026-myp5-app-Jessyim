@@ -35,6 +35,8 @@ class ViewControllerFour: UIViewController {
     
     @IBOutlet weak var Inputtext: UITextField!
     
+    @IBOutlet weak var dashboardButton: UIButton!
+    
     // MARK: - Variables and Constants
     
     
@@ -68,6 +70,10 @@ class ViewControllerFour: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Inputtext.backgroundColor = UIColor(red: 0.9, green: 0.8, blue: 1.0, alpha: 1.0)
+        //buttons are too small, so size up and make them bold
+        // make a frame to actually make it llook like a button
+        
         commentLabel()
         // Do any additional setup after loading the view.
     }
