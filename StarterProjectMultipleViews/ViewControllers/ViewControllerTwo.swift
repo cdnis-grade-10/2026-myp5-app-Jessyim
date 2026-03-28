@@ -26,6 +26,38 @@
  */
 
 import UIKit
+import Charts
+import SwiftUI
+
+struct WeeklyBarChart: View{
+    let data: [dataPoint]
+    
+    // this is teh sample data
+    
+    var body: some View{
+        Chart{
+            ForEach (data){ d in
+                BarMark(x: .value("Day",d.day), y: .value("Hours",d.hours))
+                // using barmark to make bar graphs.
+                .foregroundStyle(Color.blue.gradient)
+            }
+            
+        }
+        .chartYAxisLabel("Hours")
+        // this is the y axis the number of hours
+        .chartXAxisLabel("Day of Week")
+        // x axis is the day of the week
+        .frame(height: 300)
+        
+        .padding()
+        
+    }
+    
+}
+
+
+
+
 
 class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -36,14 +68,49 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBOutlet weak var scrollingTableView: UITableView!
     
+    @IBOutlet weak var chartContainerView: UIView!
+    
+    
     
     // MARK: - Variables and Constants
     
     var displayedEntries: [aSingleLogEntry] = []
 // this is a filtered array that only contains the logs belonging to a single activity
+
+    private var hostingController: UIHostingController<WeeklyBarChart>?
+    private let sampleData = [
+        dataPoint(day: "Mon", hours: 2),
+        dataPoint(day: "Tue", hours: 3),
+        dataPoint(day: "Wed", hours: 1),
+        dataPoint(day: "Thur", hours: 3),
+        dataPoint(day: "Fri", hours: 1),
+        dataPoint(day: "Sat", hours: 2),
+        dataPoint(day: "Sun", hours: 1)
+    ]
+
+    
     
     // MARK: - IBActions and Functions
     
+    
+    private func setUpChart(){
+        let chartView = WeeklyBarChart(data:sampleData)
+        hostingController = UIHostingController(rootView: chartView)
+        guard let hostingView = hostingController?.view else {return}
+        hostingView.translatesAutoresizingMaskIntoConstraints = false
+            chartContainerView.addSubview(hostingView)
+        
+        NSLayoutConstraint.activate([
+                hostingView.topAnchor.constraint(equalTo: chartContainerView.topAnchor),
+                hostingView.bottomAnchor.constraint(equalTo: chartContainerView.bottomAnchor),
+                hostingView.leadingAnchor.constraint(equalTo: chartContainerView.leadingAnchor),
+                hostingView.trailingAnchor.constraint(equalTo: chartContainerView.trailingAnchor)
+            ])
+    }
+    private func updateChart() {
+        hostingController?.rootView = WeeklyBarChart(data: sampleData)
+    }
+
     
     func activityLabel(){
         let selectedActivityName = previousData.nameOfActivity
@@ -119,6 +186,8 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
         scrollingTableView.dataSource = self
         scrollingTableView.delegate = self
         scrollingTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        setUpChart()
         // Do any additional setup after loading the view.
     }
 

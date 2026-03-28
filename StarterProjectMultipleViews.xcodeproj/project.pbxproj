@@ -13,9 +13,10 @@
 		0A4178E52F724DDC0033E00E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4178E22F724DDC0033E00E /* TableViewCell.swift */; };
 		0A4178E82F724E120033E00E /* TableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A4178E72F724E120033E00E /* TableViewController.xib */; };
 		0A4178E92F724E120033E00E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4178E62F724E120033E00E /* TableViewController.swift */; };
+		0A5B5C122F76FD1E00E224B5 /* LogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5B5C112F76FD1100E224B5 /* LogData.swift */; };
+		0A5B5C142F77F2A500E224B5 /* data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5B5C132F77F2A100E224B5 /* data.swift */; };
 		0A9F16BB2F57E80B0000C017 /* ViewControllerFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F16BA2F57E7FD0000C017 /* ViewControllerFour.swift */; };
 		0A9F16C12F57EC790000C017 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F16C02F57EC790000C017 /* Storage.swift */; };
-		0A9F16C52F57F3150000C017 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F16C42F57F3150000C017 /* Timer.swift */; };
 		120E289727DAFAF4000129B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120E289627DAFAF4000129B5 /* AppDelegate.swift */; };
 		120E289927DAFAF4000129B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120E289827DAFAF4000129B5 /* SceneDelegate.swift */; };
 		120E289B27DAFAF4000129B5 /* ViewControllerOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120E289A27DAFAF4000129B5 /* ViewControllerOne.swift */; };
@@ -33,9 +34,11 @@
 		0A4178E32F724DDC0033E00E /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		0A4178E62F724E120033E00E /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		0A4178E72F724E120033E00E /* TableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewController.xib; sourceTree = "<group>"; };
+		0A5B5C112F76FD1100E224B5 /* LogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogData.swift; sourceTree = "<group>"; };
+		0A5B5C132F77F2A100E224B5 /* data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = data.swift; sourceTree = "<group>"; };
+		0A7A0D5A2F7584400092EF04 /* Disney Classics (Instrumental Philharmonic Orchestra Versions) - TAM-TAM Music (144p, h264).mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Disney Classics (Instrumental Philharmonic Orchestra Versions) - TAM-TAM Music (144p, h264).mp4"; sourceTree = "<group>"; };
 		0A9F16BA2F57E7FD0000C017 /* ViewControllerFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFour.swift; sourceTree = "<group>"; };
 		0A9F16C02F57EC790000C017 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		0A9F16C42F57F3150000C017 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		120E289327DAFAF4000129B5 /* StarterProjectMultipleViews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarterProjectMultipleViews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		120E289627DAFAF4000129B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		120E289827DAFAF4000129B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +78,8 @@
 		0A9F16C82F57F33B0000C017 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				0A9F16C42F57F3150000C017 /* Timer.swift */,
+				0A5B5C112F76FD1100E224B5 /* LogData.swift */,
+				0A5B5C132F77F2A100E224B5 /* data.swift */,
 				0A9F16C02F57EC790000C017 /* Storage.swift */,
 			);
 			path = Others;
@@ -100,6 +104,7 @@
 		120E289527DAFAF4000129B5 /* StarterProjectMultipleViews */ = {
 			isa = PBXGroup;
 			children = (
+				0A7A0D5A2F7584400092EF04 /* Disney Classics (Instrumental Philharmonic Orchestra Versions) - TAM-TAM Music (144p, h264).mp4 */,
 				0A9F16C82F57F33B0000C017 /* Others */,
 				0A9F16C62F57F3230000C017 /* ViewControllers */,
 				120E289627DAFAF4000129B5 /* AppDelegate.swift */,
@@ -192,11 +197,12 @@
 				0A410C8C2F556FDE00DA0657 /* Settings.swift in Sources */,
 				120E28AB27DAFE95000129B5 /* ViewControllerTwo.swift in Sources */,
 				0A410C8E2F55703B00DA0657 /* DailyLog.swift in Sources */,
-				0A9F16C52F57F3150000C017 /* Timer.swift in Sources */,
+				0A5B5C122F76FD1E00E224B5 /* LogData.swift in Sources */,
 				120E289B27DAFAF4000129B5 /* ViewControllerOne.swift in Sources */,
 				121E32872817B5A200DC59D4 /* ViewControllerThree.swift in Sources */,
 				0A4178E52F724DDC0033E00E /* TableViewCell.swift in Sources */,
 				0A4178E92F724E120033E00E /* TableViewController.swift in Sources */,
+				0A5B5C142F77F2A500E224B5 /* data.swift in Sources */,
 				0A9F16C12F57EC790000C017 /* Storage.swift in Sources */,
 				120E289727DAFAF4000129B5 /* AppDelegate.swift in Sources */,
 				0A9F16BB2F57E80B0000C017 /* ViewControllerFour.swift in Sources */,

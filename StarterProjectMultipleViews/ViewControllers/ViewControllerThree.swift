@@ -115,7 +115,7 @@ class ViewControllerThree: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        guard let videoPath = Bundle.main.path(forResource: "howtoputonabrace", ofType: "m4v") else {
+        guard let videoPath = Bundle.main.path(forResource: "Disney", ofType: "mp4") else {
             // this sis the name of the video .m4v which i need to find a video to put here later
             print("Video not found")
             return
@@ -133,6 +133,7 @@ class ViewControllerThree: UIViewController {
         // on the horizontal axis movements
         let yOffset: CGFloat = 200
         // UP and down movement
+        layer.backgroundColor = UIColor.red.cgColor
         // all teh above are constants that atre fixed. the video can also go on repeat.
         
         layer.frame = CGRect(x: xOffset, y: yOffset, width: videoWidth, height: videoHeight)
@@ -140,7 +141,7 @@ class ViewControllerThree: UIViewController {
         layer.videoGravity = .resizeAspect // Preserve aspect ratio
         view.layer.addSublayer(layer)
         
-        player?.volume = 80
+        player?.volume = 0.8
         // u set the volum of the video, which should be changed later on in settings (can be changed)
         player?.play()
         // allows th evideo to play
