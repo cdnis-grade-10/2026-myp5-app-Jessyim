@@ -32,10 +32,13 @@ class ViewControllerFour: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet weak var finalLabel: UILabel!
+    // shows the logged time
     
     @IBOutlet weak var Inputtext: UITextField!
+    // where th ereflections are written
     
     @IBOutlet weak var dashboardButton: UIButton!
+    // just the buttonback to dashboard
     
     // MARK: - Variables and Constants
     
@@ -44,10 +47,13 @@ class ViewControllerFour: UIViewController {
 
     func commentLabel(){
         let timeName = "You logged \(previousData.hourtimeofDate) hours, \(previousData.minutestimeofDate) minutes of \(previousData.nameOfActivity) today"
+        // shows hours or minutes you have logged
         finalLabel.text = timeName
+        // displays text
     }
     
     @IBAction func reflectionSaved(_ sender: UIButton) {
+        
         guard let noteText = Inputtext.text, !noteText.isEmpty else {
             // Optionally show an alert if the field is empty
             return
@@ -55,14 +61,18 @@ class ViewControllerFour: UIViewController {
         
         let activity = previousData.nameOfActivity
         // recall, this is in storage folder with teh name of the activities
+        
         if let lastIndex = storeData.entries.indices.last {
+            // gets the last logged time, and adds the relfetcion to it
             storeData.entries[lastIndex].reflection = noteText
             storeData.saveData()
             //ensure that ethe data is stored well
             
             Inputtext.text = ""
+            // cleasrs teh text field after saving
         }else{
             print("no log entry found for ,\(activity)")
+            // not rlly useful
         }
 
     }

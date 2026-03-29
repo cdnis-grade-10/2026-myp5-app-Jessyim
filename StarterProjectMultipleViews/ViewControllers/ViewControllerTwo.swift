@@ -30,16 +30,23 @@ import Charts
 import SwiftUI
 
 struct WeeklyBarChart: View{
+    // this is the view used seperately for the chart
     let data: [dataPoint]
-    
-    // this is teh sample data
+    // accepts the chart data as an input of the data point
     
     var body: some View{
+        // using the SwiftUI now :)
+        // underneath is all the components/data needed for the chart
         Chart{
             ForEach (data){ d in
+                // this is a loop. loop through every data point until each bar is created
                 BarMark(x: .value("Day",d.day), y: .value("Hours",d.hours))
                 // using barmark to make bar graphs.
+                // barmark creates 1 bar, so therefore we need to loop
+                // the x axis shows teh day of the week so like the words MON TUE etc
+                // y axis shows the hour
                     .foregroundStyle(Color(red: 0.0824, green: 0.0902, blue: 0.2392))
+                // this is the color of the background so it is the same
             }
             
         }
@@ -49,6 +56,7 @@ struct WeeklyBarChart: View{
         // x axis is the day of the week
         .frame(height: 250)
         .padding()
+        // adds some space around the chart
         
     }
     
@@ -57,17 +65,18 @@ struct WeeklyBarChart: View{
 
 
 
-
+// this is now the 2nd view controller aLSO known as the dashboard
 class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     // MARK: - IBOutlets
     
     @IBOutlet weak var ActivityName: UILabel!
-    
+    // this is the 2nd labal u see on the view controller, it says the acitivty that was pressed from the 1st page
     @IBOutlet weak var scrollingTableView: UITableView!
-    
+    // this is the table view at the bottom that shows the different cells
     @IBOutlet weak var chartContainerView: UIView!
+    // this contains the chart in the middle
     
     
     
@@ -76,9 +85,13 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
     var displayedEntries: [aSingleLogEntry] = []
 // this is a filtered array that only contains the logs belonging to a single activity
 
+    // this allows the Weekly bar charts to be on the view controller 2
+    // show SwiftUI chart on this UIKit screen
     private var hostingController: UIHostingController<WeeklyBarChart>?
+    // hardcoded sample chart data
     private let sampleData = [
         dataPoint(day: "Mon", hours: 2),
+        // datapoint is the identifiable data points defined in storage, giving each data an UUID and defining the day, and hours
         dataPoint(day: "Tue", hours: 3),
         dataPoint(day: "Wed", hours: 1),
         dataPoint(day: "Thur", hours: 3),
@@ -93,21 +106,24 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
     
     
     private func setUpChart(){
+        //tghis sets up SwiftUI chart inside the UIKit container view
         let chartView = WeeklyBarChart(data:sampleData)
         hostingController = UIHostingController(rootView: chartView)
+        
         guard let hostingView = hostingController?.view else {return}
+        //unwraps teh chart view ensuring it doesnet crash
+        
         hostingView.translatesAutoresizingMaskIntoConstraints = false
-            chartContainerView.addSubview(hostingView)
+        chartContainerView.addSubview(hostingView)
+        // this adds teh chart to the UI view controlker
         
         NSLayoutConstraint.activate([
                 hostingView.topAnchor.constraint(equalTo: chartContainerView.topAnchor),
                 hostingView.bottomAnchor.constraint(equalTo: chartContainerView.bottomAnchor),
                 hostingView.leadingAnchor.constraint(equalTo: chartContainerView.leadingAnchor),
                 hostingView.trailingAnchor.constraint(equalTo: chartContainerView.trailingAnchor)
+                // this just streches teh graph to fit inside the view, and touch all 4 corners top bottom left and right
             ])
-    }
-    private func updateChart() {
-        hostingController?.rootView = WeeklyBarChart(data: sampleData)
     }
 
     
@@ -122,7 +138,7 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
         let selectedActivityName = previousData.nameOfActivity
         // repeating ab ove so the data can be seen in thsi function
         displayedEntries = storeData.entries.filter { $0.activity == selectedActivityName }
-        //storeData.entries ensures only related data is actually stroed
+        // only selected activity is filtered and shown in the log
         displayedEntries.sort { $0.date > $1.date }
         //date > ensures the most recent date goes at teh top
     }
@@ -135,7 +151,7 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        // dequeueReusableCell reuses cells idk how - pls check later
+        // dequeueReusableCell reuses cells
         let entry = displayedEntries[indexPath.row]
         
         let dateFormat = DateFormatter()
@@ -146,13 +162,14 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
         // we dont wnat the time stamp thereforem the time is ,none
         let dateString = dateFormat.string(from: entry.date)
         var timeString = ""
+        
         if entry.hours > 0 {
             timeString += "\(entry.hours) hour\(entry.hours == 1 ? "" : "s")"
-            // if hours is bigger than 0 you show x aomunt of hours
+            // if hours is bigger than 0 you show num aomunt of hours
         }
         if entry.minutes > 0{
             timeString += "\(entry.minutes) minutes\(entry.minutes == 1 ? "" : "s")"
-            // if minutes is larger than 0 you show x amount of minutes
+            // if minutes is larger than 0 you show num amount of minutes
         }
         if entry.hours == 0 && entry.minutes == 0 {
             timeString = "0 minutes"
@@ -166,12 +183,15 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(_ tableView:UITableView, didSelectRowAt indexPath: IndexPath){
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedEntry = displayedEntries[indexPath.row]
+        //Navigate to DailyLog screen and pass the selected date
         performSegue(withIdentifier: "showDailyLog", sender: selectedEntry.date)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender:Any?){
+        // prepare for segue pasts the data to the next screen before any navigation
         if segue.identifier == "showDailyLog",
            let destination = segue.destination as? DailyLog,
+           // sets the next page as daily log
            let date = sender as? Date{
             destination.chosenDate = date
         }
@@ -195,6 +215,7 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
         refreshData()
         // all data is refreshed :) 
         scrollingTableView.reloadData()
+        // refresh data display
     }
 
 }

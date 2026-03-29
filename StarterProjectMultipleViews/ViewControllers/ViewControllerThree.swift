@@ -27,8 +27,6 @@
 
 import UIKit
 import SwiftUI
-import AVFoundation
-// might need to request the use ofAVfoundation and access to videos
 
 class ViewControllerThree: UIViewController {
     // this is the view for timers
@@ -36,10 +34,8 @@ class ViewControllerThree: UIViewController {
     
     
     @IBOutlet weak var timerValue: UILabel!
-    var currentIndex = 0
-    // MARK: - Variables and Constants
     
-    var player: AVPlayer?
+    // MARK: - Variables and Constants
     
     var time = 00.00
     // the value u want starts as a empty value of 00.00.00
@@ -55,12 +51,17 @@ class ViewControllerThree: UIViewController {
     
     func startTimer(){
         guard !isRunning else {return}
+        // if the timer is already running this function will not be used, then it will exit this functionn
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updatetimer), userInfo: nil, repeats: true)
+        // scheduled timer is a repeating timer
+        // updates timer every 0.01 seconds
+        // repeats : true allows the timer too loop automatically
         isRunning = true
         //tells the computer that yes the timer is repeating and still counting the timer
     }
     func stopTimer(){
         timer?.invalidate()
+        // stop timer permannently
         timer=nil
         isRunning = false
         // tells the computer that the timer SHOULD STOP
@@ -77,31 +78,41 @@ class ViewControllerThree: UIViewController {
         let totalSeconds = Int(time)
         let hours = totalSeconds/3600
         //total seconds divided by 3600 is the total hours used
+        
         let minutes = (totalSeconds % 3600) / 60
         //the remainder value from dividing the total hours is at the front in braket, is taken out and divided by 60 to get how many minutes is left
+        
         let seconds = totalSeconds % 60
         // the seconds is the remainder of the totalseconds divided by 60 which is the minute
+        
         let centiseconds = Int((time - Double(totalSeconds)) * 100)
         //the fraction part of total seocnd multiplied by 100 to get a infinite value.
+        
         timerValue.text=(String(format:"%02d:%02d:%02d.%02d",hours,minutes,seconds,centiseconds))
-        //%02d ensures double digits forevery singke part of teh value
+        //%02d ensures double digits forevery single part of the value
     }
     
     @IBAction func logTime(_ sender: Any) {
         let totalMinutes = ceil(time/60)
         // ceil takes the number and rounds it, useful for calculating total minutes
+        
         let totalhours = Int(totalMinutes) / 60
         //the value of total minutes divided by 60 gives us to hours, int only give teh 1st half
+        
         let newMinutes = Int(totalMinutes) % 60
         // the remaineder gives us teh "minutes" actually used
-        let newTime = timerValue.text ?? "00:00:00.00"
         // for formating purposes not rlly needed anymore
+        
         previousData.hourtimeofDate = String(totalhours)
+        // saves the data to previous data, and the variable within it
         previousData.minutestimeofDate = String(newMinutes)
         previousData.latestDate = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .none)
+        
         let entry = aSingleLogEntry(activity: previousData.nameOfActivity,date: Date(),hours:totalhours,minutes: newMinutes,reflection: "")
         //sends teh format fro a single entry
         storeData.entries.append(entry)
+        // adds the data to the array
+        
         storeData.saveData()
     }
     
@@ -112,9 +123,6 @@ class ViewControllerThree: UIViewController {
     @IBAction func Stop(_ sender: UIButton) {
             stopTimer()
         // this stops the timer
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
         override func viewDidLoad() {

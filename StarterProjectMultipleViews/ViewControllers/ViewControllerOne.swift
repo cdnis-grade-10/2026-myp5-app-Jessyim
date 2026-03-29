@@ -38,8 +38,7 @@ class ViewControllerOne: UIViewController {
     
     
     // MARK: - Variables and Constants
-    var nameOfCAS = String()
-    
+
     
     // MARK: - IBActions and Functions
   
@@ -63,9 +62,12 @@ class ViewControllerOne: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         creativityButton.frame.size = CGSize(width: 250, height: 100)
+        // sets the size of the button to the best size ont he screen
         activityButton.frame.size = CGSize(width: 250, height: 100)
         serviceButton.frame.size = CGSize(width: 250, height: 100)
         // Do any additional setup after loading the view.
+        storeData.loadEntries()
+        // load all data
     }
 
     

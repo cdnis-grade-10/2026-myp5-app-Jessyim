@@ -11,19 +11,37 @@ import UIKit
 
 
 struct previousData{
+    //this structure stores the data that is needed to be used in view controller 2 and daily log where we need to see the minutes, hours, and name of activity, as well as the latest date together in a single cell
     static var nameOfActivity : String = ""
+    //  stores the name of the activity namingly eitehr creativity, activity or service as a string
     static var hourtimeofDate : String = ""
+    //stores the logged hours that is generated from teh timer function
     static var minutestimeofDate : String = ""
+    // minutes also logged from the timer, but as a remainder from the hour
     static var latestDate : String = ""
+    //stores the latest date which is usually the date of the logging of time usually "today"
+}
+
+struct dataPoint: Identifiable{
+    // identifiable is a protocol that NEEDS an id as seen bellow, so each data point is seperately identified with a different ID
+    var id = UUID().uuidString
+    // a unique ID
+    var day: String
+    // the day of the week from Mon - SUn
+    var hours : Int
+    // as an integer how many hours logged in
 }
 
 struct aSingleLogEntry: Codable {
     // codable is a protocol taht allows the following code to be transformed into a JSON format or back into a struct, therefore u can use JSON below
     let activity: String
+    // name of activity
     let date: Date
+    // date of the logged hours
     let hours: Int
     let minutes: Int
-    var reflection: String 
+    var reflection: String
+    // from the text field, whatever they wrote there
     //purely used to stored the data in a good structure to call for the table format easier
 }
 
@@ -41,11 +59,11 @@ struct storeData{
         }
     }
     static func loadEntries() {
-        // 1. Attempt to fetch data for the key "logEntries".
+        // raw data is retrived from using an unique key
         if let data = UserDefaults.standard.data(forKey: "logEntries"),
-               // 2. Decode the data back into an array of LogEntry.
+               // converts the JSON data back into a swift array
             let decoded = try? JSONDecoder().decode([aSingleLogEntry].self, from: data) {
-                // 3. Assign the decoded array to our static property.
+                // assign the decoded array to our static property.
             entries = decoded
             }
         }
