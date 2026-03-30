@@ -45,6 +45,8 @@ struct aSingleLogEntry: Codable {
     //purely used to stored the data in a good structure to call for the table format easier
 }
 
+
+
 struct storeData{
     static var entries: [aSingleLogEntry] = []
     // stored data variable with all the enteries of the data inclyding teh stuff above

@@ -26,6 +26,7 @@
  */
 
 import UIKit
+import SwiftUI
 
 class ViewControllerFour: UIViewController {
     
@@ -34,7 +35,7 @@ class ViewControllerFour: UIViewController {
     @IBOutlet weak var finalLabel: UILabel!
     // shows the logged time
     
-    @IBOutlet weak var Inputtext: UITextField!
+    @IBOutlet weak var Inputtext: UITextView!
     // where th ereflections are written
     
     @IBOutlet weak var dashboardButton: UIButton!
@@ -81,6 +82,7 @@ class ViewControllerFour: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Inputtext.backgroundColor = UIColor(red: 0.9, green: 0.8, blue: 1.0, alpha: 1.0)
+        Inputtext.textContainer.lineBreakMode = .byWordWrapping
         //buttons are too small, so size up and make them bold
         // make a frame to actually make it llook like a button
         
