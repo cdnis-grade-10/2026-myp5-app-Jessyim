@@ -40,9 +40,9 @@ struct WeeklyBarChart: View{
         Chart{
             ForEach (data){ d in
                 // this is a loop. loop through every data point until each bar is created
-                BarMark(x: .value("Day",d.day), y: .value("Hours",d.hours))
-                // using barmark to make bar graphs.
-                // barmark creates 1 bar, so therefore we need to loop
+                LineMark(x: .value("Day",d.day), y: .value("Hours",d.hours))
+                // using linemark to make bar graphs.
+                // linemark creates 1 point, so therefore we need to loop and connect teh points
                 // the x axis shows teh day of the week so like the words MON TUE etc
                 // y axis shows the hour
                     .foregroundStyle(Color(red: 0.0824, green: 0.0902, blue: 0.2392))
@@ -164,11 +164,11 @@ class ViewControllerTwo: UIViewController, UITableViewDataSource, UITableViewDel
         var timeString = ""
         
         if entry.hours > 0 {
-            timeString += "\(entry.hours) hour\(entry.hours == 1 ? "" : "s")"
+            timeString += "\(entry.hours) hour\(entry.hours == 1 ? "" : "")"
             // if hours is bigger than 0 you show num aomunt of hours
         }
         if entry.minutes > 0{
-            timeString += "\(entry.minutes) minutes\(entry.minutes == 1 ? "" : "s")"
+            timeString += "\(entry.minutes) minutes\(entry.minutes == 1 ? "" : "")"
             // if minutes is larger than 0 you show num amount of minutes
         }
         if entry.hours == 0 && entry.minutes == 0 {

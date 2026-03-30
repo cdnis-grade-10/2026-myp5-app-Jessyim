@@ -120,11 +120,11 @@ extension DailyLog: UITableViewDataSource{
         let dateString = dateFormat.string(from: entry.date)
         var timeString = ""
         if entry.hours > 0 {
-            timeString += "\(entry.hours) hour\(entry.hours == 1 ? "" : "s")"
+            timeString += "\(entry.hours) hour\(entry.hours == 1 ? "" : "")"
             // if hours is bigger than 0 you show x aomunt of hours
         }
         if entry.minutes > 0{
-            timeString += "\(entry.minutes) minutes\(entry.minutes == 1 ? "" : "s")"
+            timeString += "\(entry.minutes) minutes\(entry.minutes == 1 ? "" : "")"
             // if minutes is larger than 0 you show x amount of minutes
         }
         if entry.hours == 0 && entry.minutes == 0 {
@@ -154,5 +154,6 @@ extension DailyLog: UITableViewDataSource{
     }
 }
 extension DailyLog: UITableViewDelegate {
+
 }
 
