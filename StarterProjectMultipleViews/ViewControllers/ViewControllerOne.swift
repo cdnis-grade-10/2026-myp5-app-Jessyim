@@ -31,19 +31,46 @@ class ViewControllerOne: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var creativityButton: UIButton!
+    
+    @IBOutlet weak var activityButton: UIButton!
+    @IBOutlet weak var serviceButton: UIButton!
     
     
     // MARK: - Variables and Constants
-    
-    
+
     
     // MARK: - IBActions and Functions
+  
+    
+    @IBAction func Creativity(_ sender: Any) {
+        previousData.nameOfActivity = "Creativity"
+        // the button is chosen as creativty so the name creativity is stored into the storage file under the structure called name of activity, and specifically the button name
+    }
+    
+    @IBAction func Activity(_ sender: Any) {
+        previousData.nameOfActivity = "Activity"
+        // similarly the name activity is stored
+    }
+    
+    @IBAction func Service(_ sender: Any) {
+        previousData.nameOfActivity = "Service"
+        // service is chosen to be stored
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        creativityButton.frame.size = CGSize(width: 250, height: 100)
+        // sets the size of the button to the best size ont he screen
+        activityButton.frame.size = CGSize(width: 250, height: 100)
+        serviceButton.frame.size = CGSize(width: 250, height: 100)
         // Do any additional setup after loading the view.
+        storeData.loadEntries()
+        // load all data
     }
 
+    
 
 }
 
